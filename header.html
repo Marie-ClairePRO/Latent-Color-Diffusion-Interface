@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color Interface</title>
+    <style>
+        canvas {
+            border: 1px solid black;
+        }
+        .palette {
+            display: flex;
+            margin-bottom: 10px;
+        }
+        .color {
+            width: 30px;
+            height: 30px;
+            margin: 2px;
+            cursor: pointer;
+        }
+        
+        #undoButton {
+        display: block;
+        margin-top: 10px;
+        padding: 8px 16px;
+        font-size: 16px;
+        cursor: pointer;
+    }
+    </style>
+</head>
+<body>
+    <div class="palette">
+        <div class="color" style="background-color: #FF0000;" data-color="[255, 0, 0]"></div> <!-- Red -->
+        <div class="color" style="background-color: #FFA500;" data-color="[255, 165, 0]"></div> <!-- Orange -->
+        <div class="color" style="background-color: #FFFF00;" data-color="[255, 255, 0]"></div> <!-- Yellow -->
+        <div class="color" style="background-color: #00FF00;" data-color="[0, 255, 0]"></div> <!-- Lime -->
+        <div class="color" style="background-color: #00FFFF;" data-color="[0, 255, 255]"></div> <!-- Cyan -->
+        <div class="color" style="background-color: #0000FF;" data-color="[0, 0, 255]"></div> <!-- Blue -->
+        <div class="color" style="background-color: #800080;" data-color="[128, 0, 128]"></div> <!-- Purple -->
+        <div class="color" style="background-color: #FFC0CB;" data-color="[255, 192, 203]"></div> <!-- Pink -->
+        <div class="color" style="background-color: #FFFFFF;" data-color="[255, 255, 255]"></div> <!-- White -->
+        <div class="color" style="background-color: #000000;" data-color="[0, 0, 0]"></div> <!-- Black -->
+        <div class="color" style="background-color: #808080;" data-color="[128, 128, 128]"></div> <!-- Gray -->
+        <div class="color" style="background-color: #FFD700;" data-color="[255, 215, 0]"></div> <!-- Gold -->
+        <div class="color" style="background-color: #008000;" data-color="[0, 128, 0]"></div> <!-- Green -->
+        <div class="color" style="background-color: #A52A2A;" data-color="[165, 42, 42]"></div> <!-- Brown -->
+        <div class="color" style="background-color: #FFDBAC;" data-color="[255, 219, 172]"></div> <!-- Peach -->
+        <div class="color" style="background-color: #FFCBA4;" data-color="[255, 203, 164]"></div> <!-- Light Peach -->
+        <div class="color" style="background-color: #FFBFA4;" data-color="[255, 191, 164]"></div> <!-- Light Salmon -->
+        <div class="color" style="background-color: #FFA07A;" data-color="[255, 160, 122]"></div> <!-- Light Coral -->
+        <div class="color" style="background-color: #FF8C69;" data-color="[255, 140, 105]"></div> <!-- Salmon -->
+        <div class="color" style="background-color: #FF6347;" data-color="[255, 99, 71]"></div> <!-- Tomato -->
+        <div class="color" style="background-color: #FF4500;" data-color="[255, 69, 0]"></div> <!-- Orange Red -->
+        <div class="color" style="background-color: #FFDAB9;" data-color="[255, 218, 185]"></div> <!-- Peach Puff -->
+        <div class="color" style="background-color: #4A312C;" data-color="[74, 49, 44]"></div> <!-- Dark Brown -->
+        <div class="color" style="background-color: #6D4C41;" data-color="[109, 76, 65]"></div> <!-- Brown -->
+        <div class="color" style="background-color: #8D6E63;" data-color="[141, 110, 99]"></div> <!-- Medium Brown -->
+        <div class="color" style="background-color: #AF9A82;" data-color="[175, 154, 130]"></div> <!-- Light Brown -->
+        <div class="color" style="background-color: #FFB6C1;" data-color="[255, 182, 193]"></div> <!-- Light Pink -->
+        <div class="color" style="background-color: #FF69B4;" data-color="[255, 105, 180]"></div> <!-- Hot Pink -->
+        <div class="color" style="background-color: #FF1493;" data-color="[255, 20, 147]"></div> <!-- Deep Pink -->
+        <div class="color" style="background-color: #DB7093;" data-color="[219, 112, 147]"></div> <!-- Pale Violet Red -->
+        <div class="color" style="background-color: #CD5C5C;" data-color="[205, 92, 92]"></div> <!-- Indian Red -->
+        <div class="color" style="background-color: #F08080;" data-color="[240, 128, 128]"></div> <!-- Light Coral -->
+        <div class="color" style="background-color: #FFA07A;" data-color="[255, 160, 122]"></div> <!-- Light Salmon -->
+        <div class="color" style="background-color: #FA8072;" data-color="[250, 128, 114]"></div> <!-- Salmon -->
+        <div class="color" style="background-color: #E9967A;" data-color="[233, 150, 122]"></div> <!-- Dark Salmon -->
+        <div class="color" style="background-color: #FF6347;" data-color="[255, 99, 71]"></div> <!-- Tomato -->
+        <div class="color" style="background-color: #FF4500;" data-color="[255, 69, 0]"></div> <!-- Orange Red -->
+        <div class="color" style="background-color: #8B4513;" data-color="[139, 69, 19]"></div> <!-- Saddle Brown -->
+        <div class="color" style="background-color: #A0522D;" data-color="[160, 82, 45]"></div> <!-- Sienna -->
+        <div class="color" style="background-color: #D2691E;" data-color="[210, 105, 30]"></div> <!-- Chocolate -->
+        <div class="color" style="background-color: #CD853F;" data-color="[205, 133, 63]"></div> <!-- Peru -->
+        <div class="color" style="background-color: #8B4513;" data-color="[139, 69, 19]"></div> <!-- Saddle Brown -->
+        <div class="color" style="background-color: #A0522D;" data-color="[160, 82, 45]"></div> <!-- Sienna -->
+        <div class="color" style="background-color: #D2691E;" data-color="[210, 105, 30]"></div> <!-- Chocolate -->
+        <div class="color" style="background-color: #CD853F;" data-color="[205, 133, 63]"></div> <!-- Peru -->
+        <div class="color" style="background-color: #8A795D;" data-color="[138, 121, 93]"></div> <!-- Dark Tan -->
+        </div>
+        <!-- Add more colors as needed -->
+    <canvas id="imageCanvas" width="800" height="600"></canvas>
+    <input type="file" id="uploadImage" accept="image/*">
+    <input type="text" id="fileName" placeholder="Enter file name">
+    <button id="saveImage">Save Image</button>    
+    <button id="undoButton">Undo</button>
+    <script src="script.js"></script>   
+</body>
+</html>
